@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPF.TextHighlighter", "WPF.TextHighlighter\WPF.TextHighlighter.shproj", "{9DE96B50-399B-4712-8A98-DAF47C3DC835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.TextHighlighter.Demo", "WPF.TextHighlighter.Demo\WPF.TextHighlighter.Demo.csproj", "{924FE060-CA73-4AB0-9971-F218864E7686}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		WPF.TextHighlighter\WPF.TextHighlighter.projitems*{924fe060-ca73-4ab0-9971-f218864e7686}*SharedItemsImports = 4
+		WPF.TextHighlighter\WPF.TextHighlighter.projitems*{9de96b50-399b-4712-8a98-daf47c3dc835}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{924FE060-CA73-4AB0-9971-F218864E7686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924FE060-CA73-4AB0-9971-F218864E7686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924FE060-CA73-4AB0-9971-F218864E7686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924FE060-CA73-4AB0-9971-F218864E7686}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F99307A-47D7-4B2C-AD6B-16B3490444CB}
+	EndGlobalSection
+EndGlobal
