@@ -9,6 +9,11 @@
     <Import_RootNamespace>WPF.TextHighlighter</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)HighlightedPart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HighlighterDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Highlighters\IHighlighter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Highlighters\MonoHighlighter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Highlighters\RegexHighlighter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextBlockInliner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HighlightConverter.cs" />

@@ -15,9 +15,11 @@ using System.Windows.Shapes;
 
 namespace WPF.TextHighlighter.Demo
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    public class MainWindowViewModel
+    {
+        public string ExampleText { get; set; } = "System.NotImplementedException: Метод или операция не реализована.\n   в MyNLog.Services.LogFileService.OpenFile(String fileName) в C:\\Projects\\Desktop\\MyNLog\\MyNLog\\Services\\LogFileService.cs:строка 14\n   в MyNLog.Commands.OpenLogFileCommand.ExecuteInternal(Object parameter) в C:\\Projects\\Desktop\\MyNLog\\MyNLog\\Commands\\OpenLogFileCommand.cs:строка 32";
+    }
+
     public partial class MainWindow : Window
     {
         public MainWindow()

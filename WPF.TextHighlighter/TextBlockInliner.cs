@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -30,12 +31,19 @@ namespace WPF.TextHighlighter
 
         private static void OnInlinesPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d is TextBlock textBlock))
-                return;
+            try
+            {
+                if (!(d is TextBlock textBlock))
+                    return;
 
-            var inlinesCollection = textBlock.Inlines;
-            inlinesCollection.Clear();
-            inlinesCollection.AddRange((IEnumerable<Inline>)e.NewValue);
+                var inlinesCollection = textBlock.Inlines;
+                inlinesCollection.Clear();
+                inlinesCollection.AddRange((IEnumerable<Inline>)e.NewValue);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

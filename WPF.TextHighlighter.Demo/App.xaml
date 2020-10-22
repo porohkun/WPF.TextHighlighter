@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:WPF.TextHighlighter.Demo"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <local:MainWindowViewModel x:Key="MainWindowViewModel"/>
     </Application.Resources>
 </Application>

@@ -4,9 +4,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.TextHighlighter.Demo"
+        xmlns:h="clr-namespace:WPF.TextHighlighter"
+        xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        DataContext="{StaticResource MainWindowViewModel}"
+        Title="MainWindow" Height="450" Width="600">
+    <Window.Resources>
+        <Style TargetType="{x:Type Run}" x:Key="Main">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style TargetType="{x:Type Run}" x:Key="Namespace">
+            <Setter Property="Foreground" Value="#FF343434"/>
+        </Style>
+        <Style TargetType="{x:Type Run}" x:Key="Generic">
+            <Setter Property="Foreground" Value="DarkSlateGray"/>
+        </Style>
+        <Style TargetType="{x:Type Run}" x:Key="MethodName">
+            <Setter Property="Foreground" Value="DarkBlue"/>
+        </Style>
+        <Style TargetType="{x:Type Run}" x:Key="TypeName">
+            <Setter Property="Foreground" Value="DarkGreen"/>
+        </Style>
+        <Style TargetType="{x:Type Run}" x:Key="ArgName">
+            <Setter Property="Foreground" Value="Violet"/>
+        </Style>
+        <Style TargetType="{x:Type Run}" x:Key="Path">
+            <Setter Property="Foreground" Value="GreenYellow"/>
+        </Style>
+        <Style TargetType="{x:Type Run}" x:Key="Rownum">
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+        <h:HighlightConverter x:Key="Highlighter">
+            <h:MonoHighlighter Style="{StaticResource Main}"/>
+            <h:RegexHighlighter Pattern="\s{3}[^\d\s]+\s(?&lt;namespace>[\w.]+\.)(?&lt;generic>&lt;(?:\w+,?\s?)+>)*(?&lt;method>\w+\((?:\w+\s\w+,?\s?)*\))\s[^\d\s]+\s(?&lt;path>[\w:\\.]+:)[^\d\s]+\s(?&lt;rownum>\d+)">
+                <h:HighlighterDictionary>
+                    <h:MonoHighlighter x:Key="namespace" Style="{StaticResource Namespace}"/>
+                    <h:MonoHighlighter x:Key="generic" Style="{StaticResource Generic}"/>
+                    <h:RegexHighlighter x:Key="method" Pattern="(?&lt;methodname>\w+)(?&lt;openbr>\()(?&lt;args>[\w\d\s,]*)(?&lt;closebr>\))">
+                        <h:HighlighterDictionary>
+                            <h:MonoHighlighter x:Key="methodname" Style="{StaticResource MethodName}"/>
+                            <h:MonoHighlighter x:Key="openbr" Style="{StaticResource Namespace}"/>
+                            <h:RegexHighlighter x:Key="args" Pattern="(?&lt;argtype>\w+)\s(?&lt;argname>\w+)(?:, |$)">
+                                <h:HighlighterDictionary>
+                                    <h:MonoHighlighter x:Key="argtype" Style="{StaticResource TypeName}"/>
+                                    <h:MonoHighlighter x:Key="argname" Style="{StaticResource ArgName}"/>
+                                </h:HighlighterDictionary>
+                            </h:RegexHighlighter>
+                            <h:MonoHighlighter x:Key="closebr" Style="{StaticResource Namespace}"/>
+                        </h:HighlighterDictionary>
+                    </h:RegexHighlighter>
+                    <h:MonoHighlighter x:Key="path" Style="{StaticResource Path}"/>
+                    <h:MonoHighlighter x:Key="rownum" Style="{StaticResource Rownum}"/>
+                </h:HighlighterDictionary>
+            </h:RegexHighlighter>
+        </h:HighlightConverter>
+    </Window.Resources>
     <Grid>
-        
+        <TextBlock Grid.Column="1" TextWrapping="Wrap"
+                   h:TextBlockInliner.Inlines ="{Binding ExampleText, Converter={StaticResource Highlighter}}"/>
     </Grid>
 </Window>
