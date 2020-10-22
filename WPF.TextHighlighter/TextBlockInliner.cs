@@ -31,19 +31,12 @@ namespace WPF.TextHighlighter
 
         private static void OnInlinesPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            try
-            {
-                if (!(d is TextBlock textBlock))
-                    return;
+            if (!(d is TextBlock textBlock))
+                return;
 
-                var inlinesCollection = textBlock.Inlines;
-                inlinesCollection.Clear();
-                inlinesCollection.AddRange((IEnumerable<Inline>)e.NewValue);
-            }
-            catch (Exception ex)
-            {
-
-            }
+            var inlinesCollection = textBlock.Inlines;
+            inlinesCollection.Clear();
+            inlinesCollection.AddRange((IEnumerable<Inline>)e.NewValue);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
@@ -10,7 +11,7 @@ using System.Windows.Media;
 namespace WPF.TextHighlighter
 {
     [System.Windows.Markup.ContentProperty(nameof(Highlighters))]
-    public class HighlightConverter : IValueConverter
+    public class HighlightConverter : FrameworkElement, IValueConverter
     {
         public IList Highlighters { get; set; } = new List<IHighlighter>();
 
